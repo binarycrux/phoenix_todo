@@ -12,8 +12,7 @@ defmodule Todoapp.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:task])
+    |> cast(attrs, [:task, :status])
     |> validate_required([:task])
-    |> put_change(:status, "pending")
   end
 end
