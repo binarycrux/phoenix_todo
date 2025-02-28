@@ -21,12 +21,12 @@ defmodule TodoappWeb.Router do
   scope "/", TodoappWeb do
     pipe_through :browser
 
-    get "/", TodoController, :newtodo
-    post "/", TodoController, :create
-    put "/:id", TodoController, :toggle_status
-    get "/:id/edit", TodoController, :edit
-    put "/:id/edit", TodoController, :update_task
-    delete "/:id", TodoController, :delete
+    get "/", TodoController, :index
+    # post "/", TodoController, :create
+    # put "/:id", TodoController, :toggle_status
+    # get "/:id/edit", TodoController, :edit
+    # put "/:id/edit", TodoController, :update_task
+    # delete "/:id", TodoController, :delete
   end
 
   # Other scopes may use custom stacks.
@@ -67,10 +67,15 @@ defmodule TodoappWeb.Router do
 
   scope "/", TodoappWeb do
     pipe_through [:browser, :require_authenticated_user]
-
+    get "/todo", TodoController, :newtodo
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    post "/", TodoController, :create
+    put "/:id", TodoController, :toggle_status
+    get "/:id/edit", TodoController, :edit
+    put "/:id/edit", TodoController, :update_task
+    delete "/:id", TodoController, :delete
   end
 
   scope "/", TodoappWeb do

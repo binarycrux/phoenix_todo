@@ -9,7 +9,6 @@
       <.error :if={@email_changeset.action}>
         Oops, something went wrong! Please check the errors below.
       </.error>
-
       <input type="hidden" name="action" value="update_email" />
 
       <.input field={f[:email]} type="email" label="Email" required />
@@ -36,7 +35,6 @@
       <.error :if={@password_changeset.action}>
         Oops, something went wrong! Please check the errors below.
       </.error>
-
       <input type="hidden" name="action" value="update_password" />
 
       <.input field={f[:password]} type="password" label="New password" required />

@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :todoapp, Todoapp.Repo,
   username: "postgres",
-  password: "Post@localhost127!",
+  password: "postgres",
   hostname: "localhost",
   database: "todoapp_dev",
   stacktrace: true,
@@ -83,3 +83,11 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+if File.exists?("#{__DIR__}/#{Mix.env()}.local.exs") do
+  require Logger
+  import_config "#{Mix.env()}.local.exs"
+else
+  require Logger
+  Logger.warning("Didn't find '#{Mix.env()}.local.exs'")
+end

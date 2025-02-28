@@ -48,7 +48,7 @@
           </span>
           <% end %>
           <.link class="text-white bg-neutral-800 cursor-pointer" navigate={~p"/#{task}/edit"}><Heroicons.icon name="pencil-square" type="outline" class="h-4 w-4" /></.link>
-           <.link href={~p"/#{task.id}"} method="delete" data-confirm="This task will be deleted?" class="text-red-700 cursor-pointer">
+           <.link href={~p"/#{task.id}"} method="delete" data-confirm="Confirm to delete this task" class="text-red-700 cursor-pointer">
       <Heroicons.icon name="trash" type="outline" class="h-4 w-4" />
     </.link>
         </div>

@@ -3,6 +3,9 @@ defmodule TodoappWeb.TodoController do
   alias Todoapp.Task
   alias Todoapp.Tasks
 
+  def index(conn, _params) do
+    render(conn, :index)
+  end
   # Action for rendering add todo page
   def newtodo(conn, _params) do
 # Fetching all tasks from the db
@@ -16,7 +19,7 @@ tasks = Tasks.list_tasks();
       {:ok, _task} ->
         conn
         |> put_flash(:info, "Task created successfully.")
-        |> redirect(to: ~p"/")
+        |> redirect(to: ~p"/todo")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         IO.inspect(changeset.errors, label: "Changeset errors")
@@ -33,12 +36,12 @@ tasks = Tasks.list_tasks();
       {:ok, _task} ->
         conn
         |> put_flash(:info, "Task status updated successfully.")
-        |> redirect(to: ~p"/")
+        |> redirect(to: ~p"/todo")
       {:error, changeset} ->
         IO.inspect(changeset.errors, label: "Update errors")
         conn
         |> put_flash(:error, "Failed to update task status.")
-        |> redirect(to: ~p"/")
+        |> redirect(to: ~p"/todo")
     end
   end
 
@@ -57,12 +60,12 @@ def update_task(conn, %{"id" => id, "task" => new_task}) do
     {:ok, _task} ->
       conn
       |> put_flash(:info, "Task updated successfully.")
-      |> redirect(to: ~p"/")
+      |> redirect(to: ~p"/todo")
     {:error, changeset} ->
       IO.inspect(changeset.errors, label: "Update errors")
       conn
       |> put_flash(:error, "Failed to update task.")
-      |> redirect(to: ~p"/")
+      |> redirect(to: ~p"/todo")
   end
 end
 
@@ -72,7 +75,7 @@ end
     {:ok, _task} = Tasks.delete_task(task)
     conn
     |> put_flash(:info, "Task deleted successfully.")
-    |> redirect(to: ~p"/")
+    |> redirect(to: ~p"/todo")
   end
 
 end
