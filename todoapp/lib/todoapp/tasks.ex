@@ -9,13 +9,15 @@ defmodule Todoapp.Tasks do
     |> Repo.insert()
   end
 
-# Function to list all tasks
-  def list_tasks do
-    Repo.all(Task)
+# Function to list all tasks for the current user
+  def list_tasks(user_id) do
+    Repo.all(from t in Task, where: t.user_id == ^user_id)
   end
 
-  # Function to get task by ID
-  def get_task!(id), do: Repo.get!(Task, id)
+  # Function to get task by its id and user id
+  def get_task!(id, user_id) do
+    Repo.get_by!(Task, id: id, user_id: user_id)
+  end
 
   # Function to update task status
   def update_status(%Task{} = task, attrs) do

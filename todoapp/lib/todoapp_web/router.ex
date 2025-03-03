@@ -22,6 +22,7 @@ defmodule TodoappWeb.Router do
     pipe_through :browser
 
     get "/", TodoController, :index
+    live "/thermostat", ThermostatLive
     # post "/", TodoController, :create
     # put "/:id", TodoController, :toggle_status
     # get "/:id/edit", TodoController, :edit

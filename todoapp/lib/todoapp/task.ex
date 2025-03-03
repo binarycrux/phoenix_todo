@@ -5,6 +5,7 @@ defmodule Todoapp.Task do
   schema "tasks" do
     field :task, :string
     field :status, :string, default: "pending"
+    belongs_to :user, Todoapp.Accounts.User
 
     timestamps(type: :utc_datetime)
   end
@@ -12,7 +13,7 @@ defmodule Todoapp.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:task, :status])
-    |> validate_required([:task])
+    |> cast(attrs, [:task, :status, :user_id])
+    |> validate_required([:task, :user_id])
   end
 end
