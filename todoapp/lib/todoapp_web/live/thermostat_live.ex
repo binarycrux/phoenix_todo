@@ -9,7 +9,7 @@ defmodule TodoappWeb.ThermostatLive do
   end
 
   def mount(_params, _session, socket) do
-    temperature = 70 # Let's assume a fixed temperature for now
+    temperature = 70 # starts with a fixed temperature
     {:ok, assign(socket, :temperature, temperature)}
   end
 
