@@ -38,3 +38,4 @@ npm-debug.log
 #Ignore database connection configs
 /config/dev.local.exs
 
+config/dev.local.exs
