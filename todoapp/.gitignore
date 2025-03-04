@@ -35,7 +35,5 @@ todoapp-*.tar
 npm-debug.log
 /assets/node_modules/
 
-#Ignore database connection configs
-/config/dev.local.exs
-
+#Don't track database connection config file
 config/dev.local.exs
